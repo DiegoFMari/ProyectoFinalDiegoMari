@@ -88,3 +88,11 @@ body{
     width: 100%;
     text-align: center;
 }
+
+/* carrito */
+
+.icono-carrito img{
+    width: 4%;
+    height: 6%;
+}
+
