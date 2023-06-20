@@ -1,0 +1,90 @@
+/* header html */
+header{
+    border: 2px solid black;
+    height: 160px;
+    background-image: url(https://elevaterockschool.com/wp-content/uploads/guitar-header.jpg);
+}
+
+.h1-titulo{
+    color: white;
+    text-align: center;
+    background-color: rgba(34, 23, 18, 0.699);
+    border: 2px black solid;    
+}
+
+.div-nav{
+    background-color: gold;
+}
+
+/* body */
+
+body{
+    background-image: url(https://wallpaperaccess.com/full/1941125.jpg);
+}
+
+.card-guitarra{
+    display: flex;
+    background-color: gray;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+}
+
+.div-cardimg{
+    width: 250px;
+    
+}
+
+.card-guitarra{
+ margin: 10px;
+}
+
+.div-cardimg img{
+    width: 100%;
+    border: 2px black solid;
+}
+
+.div-grupocards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.div-cardmarca{
+    color: red;
+    background-color: black;
+    border-radius: 8px;
+}
+
+.div-boton {
+    margin: 10px;
+
+}
+
+.div-boton :hover{
+    color: rgb(255, 0, 0);
+}
+
+.div-cardprecio{
+    margin: 10px;
+}
+
+
+
+/* carrito */
+
+.barra{
+    width: 95%;
+
+}
+
+.thead-carrito{
+    background-color: gray;
+    border: 3px solid sandybrown;
+    width: 100%;
+    text-align: center;
+}
