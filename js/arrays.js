@@ -19,6 +19,8 @@ const arrayGuitarras = [{imagen: src="https://bairesrocks.vteximg.com.br/arquivo
                          {imagen: src="https://bairesrocks.vteximg.com.br/arquivos/ids/201930-900-900/833259-MLA31112937284_062019-F.jpg?v=637313060855770000"  , id: 119, marca: "Krammer", modelo:"Grobvater",color: "Psycho" ,tipo:"Electrica", precio: 150000 },
                          {imagen: src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCiCqNX4-CBjqOga-Zy7tVw5uzkTpZrvf1lw&usqp=CAU"  , id: 1110, marca: "Ephipone", modelo:"SG",color: "Cherry" ,tipo:"Electrica" ,precio: 110000 },
                          {imagen: src="https://www.melodyhousemi.com/assets/library/Ibanez/V50NJP-VS-2.jpg"  , id: 1111, marca: "Ibanez", modelo:"V",color: "Wood" ,tipo:"Electroacustica", precio: 180000 },
+                         {imagen: src="https://www.melodyhousemi.com/assets/library/Ibanez/V50NJP-VS-2.jpg"  , id: 1111, marca: "Ibanez", modelo:"V",color: "Wood" ,tipo:"Electroacustica", precio: 180000 },
+                         {imagen: src="https://www.melodyhousemi.com/assets/library/Ibanez/V50NJP-VS-2.jpg"  , id: 1111, marca: "Ibanez", modelo:"V",color: "Wood" ,tipo:"Electroacustica", precio: 180000 },
  ]
 
  cargarInstrumentos(arrayGuitarras);

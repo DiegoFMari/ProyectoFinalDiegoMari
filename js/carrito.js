@@ -8,6 +8,7 @@ function cargarCompraTabla(arrayGuitarras){
     <td>${arrayGuitarras.modelo}</td>
     <td>${arrayGuitarras.color}</td>
     <td>${arrayGuitarras.precio}</td>
+    <td><button id="${arrayGuitarras.id}" class="boton-eliminar">❌</button></td>
     </tr>
     `;
 
@@ -18,3 +19,5 @@ if (carrito.length > 0) {
     tbody.innerHTML += cargarCompraTabla(instrumento);
   });
 };
+
+DeleteInst();

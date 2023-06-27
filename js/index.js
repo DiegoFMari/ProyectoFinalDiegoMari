@@ -1,4 +1,6 @@
 const bodyCards = document.querySelector('.div-grupocards');
+const botonBuscar = document.querySelector('input#botonbusqueda')
+
 
 const armarCardsHTML = (instrumento) => {
   return `
@@ -13,8 +15,27 @@ const armarCardsHTML = (instrumento) => {
   `;
 };
 
+const filtrarGuitarras = ()=> {
+  let resultadoFiltro = arrayGuitarras.filter((guitar )=>guitar.marca.toLocaleLowerCase().includes(botonBuscar.value.trim().toLocaleLowerCase()))
+    if(resultadoFiltro.length >0){
+      cargarInstrumentos(resultadoFiltro)
+    }
+  }
+
+  botonBuscar.addEventListener('search',filtrarGuitarras)
 
 
+  function activarClickEnBotones(){
+    const botones = document.querySelectorAll('.boton.boton-compra')
+          for (let boton of botones){
+            boton.addEventListener('click', (e)=>{
+              const guitarraElegida=arrayGuitarras.find((guitarras)=>guitarras.id===parseInt(e.target.id))
+              carrito.push(guitarraElegida)
+              localStorage.setItem('miCarrito',JSON.stringify(carrito))       
+            })
+          }
+  };
+  
 
 const cargarInstrumentos=(array)=>{
     bodyCards.innerHTML = ''
@@ -22,19 +43,10 @@ const cargarInstrumentos=(array)=>{
     bodyCards.innerHTML += armarCardsHTML(instrumento)
     });
     activarClickEnBotones()
+    DeleteInst()
 };
 
 
-function activarClickEnBotones(){
-  const botones = document.querySelectorAll('.boton.boton-compra')
-        for (let boton of botones){
-          boton.addEventListener('click', (e)=>{
-            const guitarraElegida=arrayGuitarras.find((guitarras)=>guitarras.id===parseInt(e.target.id))
-            carrito.push(guitarraElegida)
-            localStorage.setItem('miCarrito',JSON.stringify(carrito))       
-          })
-        }
-};
 
 
 const inputNombre = document.querySelector('#inputNombre');
@@ -50,3 +62,20 @@ if(localStorage.getItem('userName')){
     inputNombre.value=localStorage.getItem('userName')
 };
 
+
+function DeleteInst() {
+  const btnDelete = document.querySelectorAll('.boton-eliminar');
+  for (let btn of btnDelete) {
+    btn.addEventListener('click', (e) => {
+      const guitarDelete = carrito.find((guitarras) => guitarras.id === parseInt(e.target.id));
+      const index = carrito.indexOf(guitarDelete);
+      if (index > -1) {
+        carrito.splice(index, 1);
+        localStorage.setItem('miCarrito', JSON.stringify(carrito));
+        tbody.innerHTML = '';
+        cargarCompraTabla(carrito);
+        location.reload();
+      }
+    });
+  }
+}
