@@ -23,4 +23,6 @@ const arrayGuitarras = [{imagen: src="https://bairesrocks.vteximg.com.br/arquivo
                          {imagen: src="https://www.melodyhousemi.com/assets/library/Ibanez/V50NJP-VS-2.jpg"  , id: 1111, marca: "Ibanez", modelo:"V",color: "Wood" ,tipo:"Electroacustica", precio: 180000 },
  ]
 
- cargarInstrumentos(arrayGuitarras);
+
+
+

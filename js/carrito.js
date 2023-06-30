@@ -20,4 +20,21 @@ if (carrito.length > 0) {
   });
 };
 
+function DeleteInst() {
+  const btnDelete = document.querySelectorAll('.boton-eliminar');
+  for (let btn of btnDelete) {
+    btn.addEventListener('click', (e) => {
+      const guitarDelete = carrito.find((guitarras) => guitarras.id === parseInt(e.target.id));
+      const index = carrito.indexOf(guitarDelete);
+      if (index > -1) {
+        carrito.splice(index, 1);
+        localStorage.setItem('miCarrito', JSON.stringify(carrito));
+        tbody.innerHTML = '';
+        cargarCompraTabla(carrito);
+        location.reload();
+      }
+    });
+  }
+}
+
 DeleteInst();

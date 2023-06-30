@@ -1,5 +1,7 @@
 const bodyCards = document.querySelector('.div-grupocards');
 const botonBuscar = document.querySelector('input#botonbusqueda')
+const inputNombre = document.querySelector('#botonbusqueda');
+
 
 
 const armarCardsHTML = (instrumento) => {
@@ -20,12 +22,12 @@ const filtrarGuitarras = ()=> {
     if(resultadoFiltro.length >0){
       cargarInstrumentos(resultadoFiltro)
     }
-  }
+  };
 
-  botonBuscar.addEventListener('search',filtrarGuitarras)
+  botonBuscar.addEventListener('keyup',filtrarGuitarras)
 
 
-  function activarClickEnBotones(){
+function activarClickEnBotones(){
     const botones = document.querySelectorAll('.boton.boton-compra')
           for (let boton of botones){
             boton.addEventListener('click', (e)=>{
@@ -35,7 +37,21 @@ const filtrarGuitarras = ()=> {
             })
           }
   };
-  
+ 
+ function botonComprar(){
+    const btnLocalStorage = document.querySelector('.boton-compra');
+    btnLocalStorage.addEventListener('click', ()=>{
+      if (inputNombre.value !==''){
+        localStorage.setItem('userName', inputNombre.value)
+      } 
+    }); 
+    
+    if(localStorage.getItem('userName')){
+        inputNombre.value=localStorage.getItem('userName')
+    }
+    };
+    
+    
 
 const cargarInstrumentos=(array)=>{
     bodyCards.innerHTML = ''
@@ -43,39 +59,14 @@ const cargarInstrumentos=(array)=>{
     bodyCards.innerHTML += armarCardsHTML(instrumento)
     });
     activarClickEnBotones()
-    DeleteInst()
+    botonComprar()
+
 };
 
+cargarInstrumentos(arrayGuitarras);
 
 
 
-const inputNombre = document.querySelector('#inputNombre');
-const btnLocalStorage = document.querySelector('button#btnLocalStorage');
-
-btnLocalStorage.addEventListener('click', ()=>{
-  if (inputNombre.value !==''){
-    localStorage.setItem('userName', inputNombre.value)
-  } 
-}); 
-
-if(localStorage.getItem('userName')){
-    inputNombre.value=localStorage.getItem('userName')
-};
 
 
-function DeleteInst() {
-  const btnDelete = document.querySelectorAll('.boton-eliminar');
-  for (let btn of btnDelete) {
-    btn.addEventListener('click', (e) => {
-      const guitarDelete = carrito.find((guitarras) => guitarras.id === parseInt(e.target.id));
-      const index = carrito.indexOf(guitarDelete);
-      if (index > -1) {
-        carrito.splice(index, 1);
-        localStorage.setItem('miCarrito', JSON.stringify(carrito));
-        tbody.innerHTML = '';
-        cargarCompraTabla(carrito);
-        location.reload();
-      }
-    });
-  }
-}
+
