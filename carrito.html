@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>carrito</title>
     <link rel="stylesheet" href="css/style.css">
-  
+
 </head>
 
 <body>
@@ -15,30 +15,39 @@
             <h1 id="titulo" class="h1-titulo"><a href="/index.html">Music House </a></h1>
         </div>
         <div id="img-header" class="img-header"></div>
-        <div id="div-nav" class="div-nav"></div> 
+        <div id="div-nav" class="div-nav"></div>
 
     </header>
 
     <body>
         <br><br>
         <table class="thead-carrito">
-        <thead>
-            <tr>
-            <th>marca</th>
-            <th>modelo</th>
-            <th>color</th>
-            <th>precio</th>
-            <th>Quitar</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table> 
-            
-   
+            <thead>
+                <tr>
+                    <th>marca</th>
+                    <th>modelo</th>
+                    <th>color</th>
+                    <th>precio</th>
+                    <th>Quitar</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-    <script defer src="js/arrays.js"></script>
-    <script defer src="js/carrito.js"></script>
+        <div class="div-total">
+            <h3>El Costo de tu compra es: $ <span class="span-total" id="span-total"></span></h3>
+        </div>
+        <div class="btn-buy-fin">
+            <divbo >
+                <input class="bnt-finish" id="bnt-finish" type="button" value="Comprar">
+            </divbo>
+
+        </div>
+
+        <script defer src="js/arrays.js"></script>
+        <script defer src="js/carrito.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 
     <footer>

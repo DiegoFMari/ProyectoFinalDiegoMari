@@ -105,7 +105,7 @@ body{
     margin: 20px;
 }
 
-.div-boton-quitar button{
+.boton-eliminar{
     cursor: pointer;
     border-radius: 8px;
     
@@ -117,3 +117,27 @@ body{
 .boton-busqueda{
     width: 100%;
 }
+
+/*total*/
+
+.div-total{
+    background-color: antiquewhite;
+    border: 2px black solid;
+    text-align: center;
+}
+
+
+.btn-buy-fin{
+    text-align: center;
+}
+
+.bnt-finish {
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100px;
+    height: 60px;
+    margin: 3%;
+    font-size: larger;
+
+}
+

@@ -33,11 +33,21 @@ function activarClickEnBotones(){
             boton.addEventListener('click', (e)=>{
               const guitarraElegida=arrayGuitarras.find((guitarras)=>guitarras.id===parseInt(e.target.id))
               carrito.push(guitarraElegida)
-              localStorage.setItem('miCarrito',JSON.stringify(carrito))       
+              localStorage.setItem('miCarrito',JSON.stringify(carrito))
+              Swal.fire({
+                title: 'Tu Guitarra se agrego al Carrito!',
+                text: 'pulsa continuar para seguir comprando',
+                icon: 'success',
+                confirmButtonText: 'continuar'
+              })       
             })
           }
   };
  
+
+
+
+
  function botonComprar(){
     const btnLocalStorage = document.querySelector('.boton-compra');
     btnLocalStorage.addEventListener('click', ()=>{
@@ -64,9 +74,5 @@ const cargarInstrumentos=(array)=>{
 };
 
 cargarInstrumentos(arrayGuitarras);
-
-
-
-
 
 
