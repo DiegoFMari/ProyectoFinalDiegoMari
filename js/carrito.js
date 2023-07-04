@@ -72,12 +72,11 @@ function cartelFnB(){
     denyButtonText: `Seguir Comprando`,
   }).then((result) => {
     if (result.isConfirmed) {
-      const { value: email } = Swal.fire({
-        title: 'Ingresa tu email para Recibir tu Factura',
-        input: 'email',
-        inputLabel: 'en las proximas horas recibiras tu factura',
-        inputPlaceholder: 'Ingresa tu Correo Electronico'
-      })
+      Swal.fire('Gracias por tu Compra', '', 'success')
+      localStorage.clear('miCarrito')
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
     } else if (result.isDenied) {
       Swal.fire('Genial! Elije algo mas!', '', 'info')
     }

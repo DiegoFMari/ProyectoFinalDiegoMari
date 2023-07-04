@@ -17,6 +17,10 @@ const armarCardsHTML = (instrumento) => {
   `;
 };
 
+function toastError(){
+  Swal.fire('UPS! algo salio mal', '', 'error')
+}
+
 const filtrarGuitarras = ()=> {
   let resultadoFiltro = arrayGuitarras.filter((guitar )=>guitar.marca.toLocaleLowerCase().includes(botonBuscar.value.trim().toLocaleLowerCase()))
     if(resultadoFiltro.length >0){
@@ -73,6 +77,15 @@ const cargarInstrumentos=(array)=>{
 
 };
 
-cargarInstrumentos(arrayGuitarras);
+// cargarInstrumentos(arrayGuitarras);
 
 
+function cargarInst(){
+  fetch(URL)
+    .then((response)=>response.json())
+    .then((data)=> arrayGuitarras.push(...data))
+    .then(()=>cargarInstrumentos(arrayGuitarras))
+    .catch((error)=> toastError())
+}
+
+cargarInst()
