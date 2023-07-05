@@ -1,10 +1,10 @@
-function recuperarLs(){
-    if (localStorage.getItem('miCarrito')){
-        return JSON.parse(localStorage.getItem('miCarrito'))  
-    }else{
+function recuperarLs() {
+    if (localStorage.getItem('miCarrito')) {
+        return JSON.parse(localStorage.getItem('miCarrito'))
+    } else {
         return []
     }
-     
+
 };
 
 const carrito = recuperarLs()

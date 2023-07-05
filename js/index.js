@@ -17,75 +17,74 @@ const armarCardsHTML = (instrumento) => {
   `;
 };
 
-function toastError(){
+function toastError() {
   Swal.fire('UPS! algo salio mal', '', 'error')
-}
+};
 
-const filtrarGuitarras = ()=> {
-  let resultadoFiltro = arrayGuitarras.filter((guitar )=>guitar.marca.toLocaleLowerCase().includes(botonBuscar.value.trim().toLocaleLowerCase()))
-    if(resultadoFiltro.length >0){
-      cargarInstrumentos(resultadoFiltro)
+const filtrarGuitarras = () => {
+  let resultadoFiltro = arrayGuitarras.filter((guitar) => guitar.marca.toLocaleLowerCase().includes(botonBuscar.value.trim().toLocaleLowerCase()))
+  if (resultadoFiltro.length > 0) {
+    cargarInstrumentos(resultadoFiltro)
+  }
+};
+
+botonBuscar.addEventListener('keyup', filtrarGuitarras);
+
+
+function activarClickEnBotones() {
+  const botones = document.querySelectorAll('.boton.boton-compra')
+  for (let boton of botones) {
+    boton.addEventListener('click', (e) => {
+      const guitarraElegida = arrayGuitarras.find((guitarras) => guitarras.id === parseInt(e.target.id))
+      carrito.push(guitarraElegida)
+      localStorage.setItem('miCarrito', JSON.stringify(carrito))
+      Swal.fire({
+        title: 'Tu Guitarra se agrego al Carrito!',
+        text: 'pulsa continuar para seguir comprando',
+        icon: 'success',
+        confirmButtonText: 'continuar'
+      })
+    })
+  }
+};
+
+
+
+
+
+function botonComprar() {
+  const btnLocalStorage = document.querySelector('.boton-compra');
+  btnLocalStorage.addEventListener('click', () => {
+    if (inputNombre.value !== '') {
+      localStorage.setItem('userName', inputNombre.value)
     }
-  };
+  });
 
-  botonBuscar.addEventListener('keyup',filtrarGuitarras)
-
-
-function activarClickEnBotones(){
-    const botones = document.querySelectorAll('.boton.boton-compra')
-          for (let boton of botones){
-            boton.addEventListener('click', (e)=>{
-              const guitarraElegida=arrayGuitarras.find((guitarras)=>guitarras.id===parseInt(e.target.id))
-              carrito.push(guitarraElegida)
-              localStorage.setItem('miCarrito',JSON.stringify(carrito))
-              Swal.fire({
-                title: 'Tu Guitarra se agrego al Carrito!',
-                text: 'pulsa continuar para seguir comprando',
-                icon: 'success',
-                confirmButtonText: 'continuar'
-              })       
-            })
-          }
-  };
- 
+  if (localStorage.getItem('userName')) {
+    inputNombre.value = localStorage.getItem('userName')
+  }
+};
 
 
 
-
- function botonComprar(){
-    const btnLocalStorage = document.querySelector('.boton-compra');
-    btnLocalStorage.addEventListener('click', ()=>{
-      if (inputNombre.value !==''){
-        localStorage.setItem('userName', inputNombre.value)
-      } 
-    }); 
-    
-    if(localStorage.getItem('userName')){
-        inputNombre.value=localStorage.getItem('userName')
-    }
-    };
-    
-    
-
-const cargarInstrumentos=(array)=>{
-    bodyCards.innerHTML = ''
-    array.forEach((instrumento) => {
+const cargarInstrumentos = (array) => {
+  bodyCards.innerHTML = ''
+  array.forEach((instrumento) => {
     bodyCards.innerHTML += armarCardsHTML(instrumento)
-    });
-    activarClickEnBotones()
-    botonComprar()
+  });
+  activarClickEnBotones()
+  botonComprar()
 
 };
 
-// cargarInstrumentos(arrayGuitarras);
 
 
-function cargarInst(){
+function cargarInst() {
   fetch(URL)
-    .then((response)=>response.json())
-    .then((data)=> arrayGuitarras.push(...data))
-    .then(()=>cargarInstrumentos(arrayGuitarras))
-    .catch((error)=> toastError())
-}
+    .then((response) => response.json())
+    .then((data) => arrayGuitarras.push(...data))
+    .then(() => cargarInstrumentos(arrayGuitarras))
+    .catch((error) => toastError())
+};
 
 cargarInst()

@@ -1,10 +1,10 @@
 const tbody = document.querySelector('tbody');
-const costoCompra = document.querySelector('#span-total')
+const costoCompra = document.querySelector('#span-total');
 
 
 
-function cargarCompraTabla(arrayGuitarras){
-    return`
+function cargarCompraTabla(arrayGuitarras) {
+  return `
     <tr>
     <td>${arrayGuitarras.marca}</td>
     <td>${arrayGuitarras.modelo}</td>
@@ -22,18 +22,18 @@ if (carrito.length > 0) {
   });
 };
 
-function deleteAlert(){
+function deleteAlert() {
   Swal.fire({
     title: 'Se Elimino un Articulo del Carrito!',
     icon: 'error',
     confirmButtonText: 'continuar'
   })
-}
+};
 
 function calcularTotalCompra() {
   const total = carrito.reduce((acumulador, instrumento) => acumulador + instrumento.precio, 0);
   return total;
-}
+};
 
 function DeleteInst() {
   const btnDelete = document.querySelectorAll('.boton-eliminar');
@@ -55,16 +55,16 @@ function DeleteInst() {
       }
     });
   });
-}
+};
 
 DeleteInst();
 
 
 
 const totalCompra = calcularTotalCompra();
-costoCompra.textContent= totalCompra
+costoCompra.textContent = totalCompra
 
-function cartelFnB(){
+function cartelFnB() {
   Swal.fire({
     title: '¿Deseas Terminar con Tu compra?',
     showDenyButton: true,
@@ -81,12 +81,12 @@ function cartelFnB(){
       Swal.fire('Genial! Elije algo mas!', '', 'info')
     }
   })
-}
+};
 
-function finalizaCompra(){
+function finalizaCompra() {
   const btnbuy = document.querySelector('#bnt-finish')
-  btnbuy.addEventListener('click',()=>{
+  btnbuy.addEventListener('click', () => {
     cartelFnB()
   })
-}
+};
 finalizaCompra()
